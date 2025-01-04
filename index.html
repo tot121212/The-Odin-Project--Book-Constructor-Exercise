@@ -8,6 +8,33 @@
     <script src="bookconstructor.js" defer></script>
 </head>
 <body>
-    
+    <button id="addNewBook">Add a new book</button>
+    <dialog id="addBookModal">
+        <form id="addBookForm" method="dialog">
+            <label for="title">Title: </label>
+            <input type="text" name="title" id="title" placeholder="Title">
+            <label for="author">Author: </label>
+            <input type="text" name="author" id="author" placeholder="Author">
+            <label for="pages">Pages: </label>
+            <input type="number" name="pages" id="pages" placeholder="0">
+            <label for="isRead">Was read:</label>
+            <input type="checkbox" name="isRead" id="isRead">
+            <button id="cancelForm" value="cancel" formethod="dialog">Cancel</button>
+            <button id="submitForm" value="default">Submit</button>
+        </form>
+    </dialog>
+    <table id="bookTable">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Pages</th>
+                <th>Read</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
 </body>
 </html>

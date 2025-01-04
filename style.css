@@ -1,4 +1,22 @@
 body{
     height: 100%;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+body > *{
+    flex: 0 1 0px;
+    width: 50%;
+}
+
+th{
+    border: 1px solid black;
+}
+
+#addBookModal form{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
