@@ -17,36 +17,26 @@ function addBookToLibrary(book){
     myLibrary.push(book);
 }
 
+let tBody = null;
 function displayBooks(){
-    // place data inside the book table
-    let tBody = document.querySelector("table#bookTable tbody");
     tBody.innerHTML = "";
     myLibrary.forEach(book => {
         tBody.innerHTML += 
         `
-        <tr id="${book.id}">
+        <tr data-id="${myLibrary.indexOf(book)}">
             <td>${book.title}</td>
             <td>${book.author}</td>
             <td>${book.pages}</td>
             <td>${book.isRead ? "Yes" : "No"}</td>
-            <button class="remove-book" data-id="${book.id}">Remove</button>
+            <td><input type="checkbox" class="toggle-read" ${book.isRead ? "checked" : ""}></td>
+            <td><button class="remove-book">Remove</button></td>
         </tr>
         `
-    });
-
-    tBody.addEventListener("click", (event) => {
-        if (event.target.classList.contains("remove-book")){
-            // TODO: Fix
-            const removeButton = tBody.querySelector(`tr#${book.id} button#remove`);
-            removeButton.addEventListener("click", (event) => {
-                myLibrary.splice(myLibrary.indexOf(book), 1);
-                displayBooks();
-    });
-        }
     });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    tBody = document.querySelector("table#bookTable tbody");
     displayBooks();
     let addBookButton = document.querySelector("button#addNewBook");
     let addBookModal = document.querySelector("dialog#addBookModal");
@@ -55,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // display modal
             // after submit clear inputs
         addBookModal.showModal();
-    })
+    });
     
     addBookForm.addEventListener("submit", (event) => {
         event.preventDefault();
@@ -71,5 +61,23 @@ document.addEventListener("DOMContentLoaded", () => {
         addBookModal.close();
         addBookForm.reset();
         displayBooks();
-    })
+    });
+
+    tBody.addEventListener("click", (event) => {
+        if (event.target.classList.contains("remove-book")){
+            const index = event.target.closest("tr").getAttribute('data-id');
+            console.log(String(index))
+            if (index){
+                myLibrary.splice(index, 1);
+                displayBooks();
+            }
+        }
+        if (event.target.classList.contains("toggle-read")){
+            const index = event.target.closest("tr").getAttribute('data-id');
+            if (index){
+                myLibrary[index].isRead = !myLibrary[index].isRead;
+                displayBooks();
+            }
+        }
+    });
 })
