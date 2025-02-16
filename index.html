@@ -12,13 +12,17 @@
     <dialog id="addBookModal">
         <form id="addBookForm" method="dialog">
             <label for="title">Title: </label>
-            <input type="text" name="title" id="title" placeholder="Title" required>
+            <input type="text" name="title" id="title" placeholder="Title" required minlength="3" maxlength="30">
+
             <label for="author">Author: </label>
-            <input type="text" name="author" id="author" placeholder="Author" required>
+            <input type="text" name="author" id="author" placeholder="Author" required minlength="1" maxlength="999">
+
             <label for="pages">Pages: </label>
-            <input type="number" name="pages" id="pages" placeholder="0" required>
+            <input type="number" name="pages" id="pages" placeholder="0" required min="1" max="999999999" type="number">
+
             <label for="isRead">Was read:</label>
             <input type="checkbox" name="isRead" id="isRead" required>
+
             <button id="cancelForm" value="cancel" formethod="dialog" type="button">Cancel</button>
             <button id="submitForm" value="default" type="submit">Submit</button>
         </form>

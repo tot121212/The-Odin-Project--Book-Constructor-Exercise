@@ -19,3 +19,7 @@ th{
     flex-direction: column;
     gap: 8px;
 }
+
+dialog:-internal-dialog-in-top-layer::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+}
