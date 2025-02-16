@@ -63,6 +63,12 @@ document.addEventListener("DOMContentLoaded", () => {
         addBookForm.reset();
         displayBooks();
     });
+    addBookForm.querySelector("#cancelForm").addEventListener("click", (event) => {
+        event.preventDefault();
+        addBookModal.close();
+        addBookForm.reset();
+        displayBooks();
+    });
 
     tBody.addEventListener("click", (event) => {
         if (event.target.classList.contains("remove-book")){

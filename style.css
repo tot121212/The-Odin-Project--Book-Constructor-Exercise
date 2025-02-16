@@ -8,7 +8,6 @@ body{
 
 body > *{
     flex: 0 1 0px;
-    width: 80%;
 }
 
 th{
